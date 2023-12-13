@@ -24,9 +24,23 @@ KEYWORDS = {
     TokenType.BooleanTrue: ["yes", "true", "right", "correct"],
     TokenType.BooleanFalse: ["no", "false", "wrong", "incorrect"],
 
-    TokenType.Article: ["a ", "the "],
+    TokenType.Input: ["I heard ", "I asked ", "I read "],
+    TokenType.Print: ["I said ", "I wrote ", "I sang "]
 
-    TokenType.Quotes: ["\""],
-
-    TokenType.Apostrophe: ["`"],
+    # TokenType.Article: ["a ", "the "],
 }
+
+LONG_KEYWORDS_LIST = []
+SHORT_KEYWORDS_LIST = []
+for keywords in KEYWORDS.values():
+    for string in keywords:
+        splt = list(filter(None, string.split()))
+        if len(splt) > 1:
+            LONG_KEYWORDS_LIST += splt
+        else:
+            SHORT_KEYWORDS_LIST += [splt[0] + " "]
+
+# SHORT_KEYWORDS_LIST += "\" "
+# SHORT_KEYWORDS_LIST += "` "
+print(SHORT_KEYWORDS_LIST)
+ALL_KEYWORDS_LIST = LONG_KEYWORDS_LIST + SHORT_KEYWORDS_LIST

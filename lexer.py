@@ -1,4 +1,4 @@
-import re
+import regex as re
 
 from exceptions import LexerError
 from grammar import *
@@ -31,7 +31,9 @@ class Lexer(object):
             self._group_type[group_name] = _token_type
             i += 1
 
-        self._regex = re.compile('|'.join(regex_parts))
+        self._regex = re.compile('|'.join(regex_parts),
+                                 punctuation=list(PUNCTUATION) + ["(", ")"],
+                                 keywords=ALL_KEYWORDS_LIST)
 
     def _get_next_token(self):
         if self._position >= len(self._input):
@@ -49,11 +51,11 @@ class Lexer(object):
     def get_tokens(self, _input):
         _input = _input.replace("“", "\"").replace("”", "\"") \
             .replace("‘", "`").replace("’", "'")
-        print(_input)
         self._input = _input
         self._position = 0
         while True:
             _token = self._get_next_token()
+            print(_token)
             if _token is None:
                 break
             yield _token
@@ -62,8 +64,6 @@ class Lexer(object):
 def tokenize(inp):
     rules = [
         (rf"[{PUNCTUATION}]", TokenType.Punctuation),
-        ("\(", TokenType.LeftBracket),
-        ("\)", TokenType.RightBracket),
     ]
 
     for _type in KEYWORDS.keys():
@@ -72,7 +72,11 @@ def tokenize(inp):
 
     rules.append((" ", TokenType.Space))
     rules.append(("\n", TokenType.NewLine))
-    rules.append((r"[\w' ]+", TokenType.Identifier))
+    rules.append((r"\(.*?\)", TokenType.BlockComment))
+    rules.append((r"(?:P\.)*S\..*(?:\n|\Z)", TokenType.BlockComment))
+    rules.append((r"\"\w*?\"", TokenType.String))
+    rules.append((r"[\w' ]*\w(?=\L<punctuation>)", TokenType.Identifier))
+    rules.append((r"[\w' ]*\w(?= \L<keywords>)", TokenType.Identifier))
 
     lexer = Lexer(rules)
     tokens = lexer.get_tokens(inp)

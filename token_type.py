@@ -20,7 +20,6 @@ class TokenType(Enum):
     RightBracket = 10
     Punctuation = 11
 
-    PostScriptum = 12
 
     NewLine = 13
     Space = 14
@@ -69,3 +68,8 @@ class TokenType(Enum):
     Increment = 46
     Decrement = 47
     And = 48
+    InlineComment = 51
+    BlockComment = 52
+    String = 53
+    Input = 54
+    Print = 55

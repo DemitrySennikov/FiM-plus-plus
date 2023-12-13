@@ -1,7 +1,3 @@
-Dear Princess Celestia: Hello World!
-
-Today I learned how to say Hello World!
-I said “Hello World”!
-That’s all about how to say Hello World!
-
-Your faithful student, Kyli Rouge.
+(I can say anything I want in here!)
+I said “something”! (replace “something” with the actual variable)
+Dear Princess Celestia( and Princess Luna and Princess Cadence): Hey, Celly!
