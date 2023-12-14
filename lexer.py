@@ -55,7 +55,6 @@ class Lexer(object):
         self._position = 0
         while True:
             _token = self._get_next_token()
-            print(_token)
             if _token is None:
                 break
             yield _token
@@ -68,15 +67,16 @@ def tokenize(inp):
 
     for _type in KEYWORDS.keys():
         for keyword in KEYWORDS[_type]:
-            rules.append((keyword, _type))
+            rules.append((rf"{keyword}(?=[{PUNCTUATION + ' '}])", _type))
 
     rules.append((" ", TokenType.Space))
     rules.append(("\n", TokenType.NewLine))
     rules.append((r"\(.*?\)", TokenType.BlockComment))
     rules.append((r"(?:P\.)*S\..*(?:\n|\Z)", TokenType.BlockComment))
-    rules.append((r"\"\w*?\"", TokenType.String))
+    rules.append((r"\"[\w ]*?\"", TokenType.String))
     rules.append((r"[\w' ]*\w(?=\L<punctuation>)", TokenType.Identifier))
-    rules.append((r"[\w' ]*\w(?= \L<keywords>)", TokenType.Identifier))
+    rules.append((rf"[\w' ]*\w(?= \L<keywords>[{PUNCTUATION + ' '}])",
+                  TokenType.Identifier))
 
     lexer = Lexer(rules)
     tokens = lexer.get_tokens(inp)

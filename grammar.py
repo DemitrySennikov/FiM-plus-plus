@@ -3,31 +3,38 @@ from token_type import TokenType
 PUNCTUATION = ".,!?‽…:"
 
 KEYWORDS = {
-    TokenType.ClassDeclaration: ["Dear "],
+    TokenType.ClassDeclaration: ["Dear"],
     TokenType.ClassEnding: ["Your faithful student"],
 
-    TokenType.MainTag: ["Today "],
-    TokenType.MethodDeclaration: ["I learned "],
+    TokenType.MainTag: ["Today"],
+    TokenType.MethodDeclaration: ["I learned"],
     TokenType.MethodReturnType: ["with", "to get"],
     TokenType.MethodArguments: ["using"],
 
-    TokenType.MethodReturn: ["Then you get "],
-    TokenType.MethodEnding: ["That's all about "],
+    TokenType.MethodReturn: ["Then you get"],
+    TokenType.MethodEnding: ["That's all about"],
 
-    TokenType.MethodCall: ["I remembered ", "I would "],
+    TokenType.MethodCall: ["I remembered", "I would"],
 
     TokenType.VariableDeclarationStart: ["Did you know that "],
-    TokenType.VariableDeclarationMiddle: ["is ", "was ", "has ", "had ",
-                                          "like ", "likes ", "liked "],
-    TokenType.VariableConstant: ["always "],
+    TokenType.VariableDeclarationMiddle: ["is", "was", "has", "had",
+                                          "like", "likes", "liked"],
+    TokenType.VariableConstant: ["always"],
 
     TokenType.BooleanTrue: ["yes", "true", "right", "correct"],
     TokenType.BooleanFalse: ["no", "false", "wrong", "incorrect"],
 
-    TokenType.Input: ["I heard ", "I asked ", "I read "],
-    TokenType.Print: ["I said ", "I wrote ", "I sang "]
+    TokenType.Input: ["I heard", "I asked", "I read"],
+    TokenType.Print: ["I said", "I wrote", "I sang"],
 
-    # TokenType.Article: ["a ", "the "],
+    TokenType.If: ["If"],
+    TokenType.When: ["When"],
+
+    TokenType.Not: ["not"],
+    TokenType.Then: ["then"],
+
+
+    TokenType.Article: ["a ", "the "],
 }
 
 LONG_KEYWORDS_LIST = []
@@ -42,5 +49,4 @@ for keywords in KEYWORDS.values():
 
 # SHORT_KEYWORDS_LIST += "\" "
 # SHORT_KEYWORDS_LIST += "` "
-print(SHORT_KEYWORDS_LIST)
 ALL_KEYWORDS_LIST = LONG_KEYWORDS_LIST + SHORT_KEYWORDS_LIST

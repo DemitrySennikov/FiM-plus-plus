@@ -73,3 +73,9 @@ class TokenType(Enum):
     String = 53
     Input = 54
     Print = 55
+
+    If = 56
+    When = 57,
+
+    Not = 58
+    Then = 59
