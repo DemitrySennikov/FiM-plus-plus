@@ -16,7 +16,7 @@ KEYWORDS = {
 
     TokenType.MethodCall: ["I remembered", "I would"],
 
-    TokenType.VariableDeclarationStart: ["Did you know that "],
+    TokenType.VariableDeclarationStart: ["Did you know that"],
     TokenType.VariableDeclarationMiddle: ["is", "was", "has", "had",
                                           "like", "likes", "liked"],
     TokenType.VariableConstant: ["always"],
