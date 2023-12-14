@@ -72,8 +72,11 @@ def tokenize(inp):
     rules.append((" ", TokenType.Space))
     rules.append(("\n", TokenType.NewLine))
     rules.append((r"\(.*?\)", TokenType.BlockComment))
+    # rules.append((rf"\d+\.\d+[ {PUNCTUATION}^.]", TokenType.Number))
+    # rules.append((r"\d+\.\d*", TokenType.Number))
     rules.append((r"(?:P\.)*S\..*(?:\n|\Z)", TokenType.BlockComment))
     rules.append((r"\"[\w ]*?\"", TokenType.String))
+    rules.append((r"`[\w ]`", TokenType.Character))
     rules.append((r"[\w' ]*\w(?=\L<punctuation>)", TokenType.Identifier))
     rules.append((rf"[\w' ]*\w(?= \L<keywords>[{PUNCTUATION + ' '}])",
                   TokenType.Identifier))

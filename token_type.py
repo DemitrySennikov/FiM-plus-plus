@@ -46,6 +46,7 @@ class TokenType(Enum):
     Quotes = 29
 
     Apostrophe = 30
+    Character = 228
 
     InfixAdditionStart = 31
     InfixAdditionEnd = 32
@@ -75,7 +76,8 @@ class TokenType(Enum):
     Print = 55
 
     If = 56
-    When = 57,
+    When = 57
 
     Not = 58
     Then = 59
+    Number = 337

@@ -33,8 +33,15 @@ KEYWORDS = {
     TokenType.Not: ["not"],
     TokenType.Then: ["then"],
 
+    TokenType.And: ["and"],
+    TokenType.Article: ["a", "the"],
+    TokenType.Nothing: ["nothing"],
 
-    TokenType.Article: ["a ", "the "],
+    TokenType.NumberType: ["number"],
+    TokenType.NumberArray: ["numbers"],
+    TokenType.ArrayDeclaration: ["many"],
+    TokenType.CharacterType: ["character", "letter"],
+    TokenType.CharacterArray: ["word", "phrase", "sentence", "quote", "name"]
 }
 
 LONG_KEYWORDS_LIST = []
