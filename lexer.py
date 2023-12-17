@@ -1,3 +1,4 @@
+import regex
 import regex as re
 
 from exceptions import LexerError
@@ -32,7 +33,7 @@ class Lexer(object):
             i += 1
 
         self._regex = re.compile('|'.join(regex_parts),
-                                 punctuation=list(PUNCTUATION) + ["(", ")"],
+                                 # punctuation=list(PUNCTUATION) + ["(", ")"],
                                  keywords=ALL_KEYWORDS_LIST)
 
     def _get_next_token(self):
@@ -51,6 +52,7 @@ class Lexer(object):
     def get_tokens(self, _input):
         _input = _input.replace("“", "\"").replace("”", "\"") \
             .replace("‘", "`").replace("’", "'")
+        _input = regex.sub(r"\(.*\)", "", _input)
         self._input = _input
         self._position = 0
         while True:
@@ -67,19 +69,18 @@ def tokenize(inp):
 
     for _type in KEYWORDS.keys():
         for keyword in KEYWORDS[_type]:
-            rules.append((rf"{keyword}(?=[{PUNCTUATION + ' '}])", _type))
+            rules.append((rf"{keyword}(?=[ {PUNCTUATION}])", _type))
 
     rules.append((" ", TokenType.Space))
-    rules.append(("\n", TokenType.NewLine))
-    rules.append((r"\(.*?\)", TokenType.BlockComment))
-    # rules.append((rf"\d+\.\d+[ {PUNCTUATION}^.]", TokenType.Number))
-    # rules.append((r"\d+\.\d*", TokenType.Number))
+    rules.append((rf"\d+\.\d+[{PUNCTUATION} ^.]", TokenType.Number))
+    rules.append((r"\d+\.\d*", TokenType.Number))
     rules.append((r"(?:P\.)*S\..*(?:\n|\Z)", TokenType.BlockComment))
-    rules.append((r"\"[\w ]*?\"", TokenType.String))
+    rules.append((rf"\"[\w{PUNCTUATION}\s]*?\"", TokenType.String))
+    rules.append(("\n", TokenType.NewLine))
     rules.append((r"`[\w ]`", TokenType.Character))
-    rules.append((r"[\w' ]*\w(?=\L<punctuation>)", TokenType.Identifier))
-    rules.append((rf"[\w' ]*\w(?= \L<keywords>[{PUNCTUATION + ' '}])",
+    rules.append((rf"[\w' ]*?\w(?= \L<keywords>[ {PUNCTUATION}])",
                   TokenType.Identifier))
+    rules.append((rf"[\w' ]*?\w(?=[{PUNCTUATION}\"])", TokenType.Identifier))
 
     lexer = Lexer(rules)
     tokens = lexer.get_tokens(inp)

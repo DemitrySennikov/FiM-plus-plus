@@ -2,82 +2,89 @@ from enum import Enum
 
 
 class TokenType(Enum):
-    Identifier = 0
-    ClassDeclaration = 1
-    ClassEnding = 2
+    IfEnding = 1
+    Addition = 2
+    Subtraction = 3
+    Division = 4
+    Than = 5
+    Or = 6
+    By = 7
+    Greater = 8
+    LessThanOrEqual = 9
+    Less = 10
+    NotEqual = 11
+    For = 12
+    In = 13
+    IterEnding = 14
+    While = 15
+    DoWhileEnding = 16
+    Switch = 17
+    SwitchNumberEnding = 18
+    Hoof = 19
+    Default = 20
+    GreaterOrEqual = 21
+    Either = 22
+    Multiplication = 23
+    Else = 24
+    VariableModifier = 255
+    Identifier = 25
+    Identifier2 = 256
+    ClassDeclaration = 26
+    ClassEnding = 27
 
-    MainTag = 3
+    MainTag = 28
 
-    MethodDeclaration = 4
-    MethodArguments = 5
-    MethodReturnType = 6
-    MethodEnding = 6
+    MethodDeclaration = 29
+    MethodArguments = 30
+    MethodReturnType = 31
+    MethodEnding = 32
 
-    MethodReturn = 7
-    MethodCall = 8
+    MethodReturn = 33
+    MethodCall = 34
 
-    LeftBracket = 9
-    RightBracket = 10
-    Punctuation = 11
+    LeftBracket = 35
+    RightBracket = 36
+    Punctuation = 37
+    NewLine = 38
+    Space = 39
 
+    VariableDeclarationStart = 40
+    VariableDeclarationMiddle = 41
+    VariableConstant = 42
+    Nothing = 43
 
-    NewLine = 13
-    Space = 14
+    Article = 44
 
-    VariableDeclarationStart = 15
-    VariableDeclarationMiddle = 16
-    VariableConstant = 17
-    Nothing = 18
+    NumberType = 45
+    CharacterType = 46
+    StringType = 47
+    BooleanTrue = 48
+    BooleanFalse = 49
+    BooleanType = 50
 
-    Article = 19
+    ArrayDeclaration = 51
+    NumberArray = 52
+    CharacterArray = 53
+    StringArray = 54
+    BooleanArray = 55
 
-    NumberType = 20
-    CharacterType = 21
-    StringType = 22
-    BooleanTrue = 23
-    BooleanFalse = 50
+    Quotes = 56
 
-    ArrayDeclaration = 24
-    NumberArray = 25
-    CharacterArray = 26
-    StringArray = 27
-    BooleanArray = 28
+    Apostrophe = 57
+    Character = 58
 
-    Quotes = 29
+    Increment = 59
+    Decrement = 60
+    And = 61
+    InlineComment = 62
+    BlockComment = 63
+    String = 64
+    Input = 65
+    Print = 66
 
-    Apostrophe = 30
-    Character = 228
+    If = 67
 
-    InfixAdditionStart = 31
-    InfixAdditionEnd = 32
-    InfixSubtractionStart = 33
-    InfixSubtractionEnd = 34
-    InfixMultiplicationStart = 35
-    InfixMultiplicationEnd = 36
-    InfixDivisionStart = 37
-    InfixDivisionEnd = 38
-
-    PrefixAdditionStart = 39
-    PrefixAdditionEnd = 49
-    PrefixSubtractionStart = 40
-    PrefixSubtractionEnd = 41
-    PrefixMultiplicationStart = 42
-    PrefixMultiplicationEnd = 43
-    PrefixDivisionStart = 44
-    PrefixDivisionEnd = 45
-
-    Increment = 46
-    Decrement = 47
-    And = 48
-    InlineComment = 51
-    BlockComment = 52
-    String = 53
-    Input = 54
-    Print = 55
-
-    If = 56
-    When = 57
-
-    Not = 58
-    Then = 59
-    Number = 337
+    Not = 68
+    Then = 69
+    Number = 70
+    From = 71
