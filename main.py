@@ -28,7 +28,7 @@ if __name__ == "__main__":
         except LexerError as err:
             print(f"Lexer error at pos {err.position}.")
             print(inp[err.position])
-            print(inp[err.position-10:err.position+10])
+            print(inp[err.position:err.position+10])
         except PonyValueException as err:
             print(err)
     except Exception as err:
